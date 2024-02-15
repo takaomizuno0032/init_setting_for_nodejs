@@ -8,7 +8,7 @@ if [ ! -f "./tsconfig.json" ]; then
     npx tsc --init --rootDir src --outDir lib --esModuleInterop --resolveJsonModule --lib es6,dom --module commonjs
 fi
 
-if [ ! -d "./src"]; then
+if [ ! -d "./src" ]; then
     echo "create src directory."
     mkdir src
 fi
