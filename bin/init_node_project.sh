@@ -29,9 +29,9 @@ fi
 
 os=$(uname)
 if [ $os = "Darwin" ]; then
-    sed -i '' 's/\("test": "echo \\"Error: no test specified\\" && exit 1"\)/\1,\n        "start": "nodemon index.ts"/' package.json
+    sed -i '' 's/\("test": "echo \\"Error: no test specified\\" && exit 1"\)/\1,\n        "start": "nodemon src/index.ts"/' package.json
 else
-    sed -i 's/\("test": "echo \\"Error: no test specified\\" && exit 1"\)/\1,\n        "start": "nodemon index.ts"/' filename
+    sed -i 's/\("test": "echo \\"Error: no test specified\\" && exit 1"\)/\1,\n        "start": "nodemon src/index.ts"/' filename
 fi
 
 cat <<EOF >.gitignore
