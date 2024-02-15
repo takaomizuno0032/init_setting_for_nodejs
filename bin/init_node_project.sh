@@ -26,3 +26,55 @@ if [ ! -s "./src/index.ts" ]; then
     echo "" >>./src/index.ts
     echo "main()" >>./src/index.ts
 fi
+
+os=$(uname)
+if [ $os = "Darwin" ]; then
+    sed -i '' 's/\("test": "echo \\"Error: no test specified\\" && exit 1"\)/\1,\n        "start": "nodemon index.ts"/' package.json
+else
+    sed -i 's/\("test": "echo \\"Error: no test specified\\" && exit 1"\)/\1,\n        "start": "nodemon index.ts"/' filename
+fi
+
+cat <<EOF >.gitignore
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.swp
+
+pids
+logs
+results
+tmp
+
+# Build
+public/css/main.css
+
+# Coverage reports
+coverage
+
+# API keys and secrets
+.env
+
+# Dependency directory
+node_modules
+bower_components
+
+# Editors
+.idea
+*.iml
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist/**/*
+
+# ignore yarn.lock
+yarn.lock
+
+EOF
